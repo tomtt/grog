@@ -1,3 +1,5 @@
+require 'optparse'
+
 module Grog
   class Options
     attr_accessor :number_of_commits_to_show, :show_datetimes
