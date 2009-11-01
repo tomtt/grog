@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
      "features/grog.feature",
      "features/step_definitions/grog_steps.rb",
      "features/support/env.rb",
+     "grog.gemspec",
      "lib/grog.rb",
      "spec/grog_spec.rb",
      "spec/spec.opts",
