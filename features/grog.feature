@@ -13,7 +13,7 @@ Feature: default output of grog
     When I run grog on the test git repo
     Then the output should be
       """
-hello
-[]
+Commit B
+Commit A
 
       """
