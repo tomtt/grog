@@ -1,6 +1,6 @@
 = grog
 
-Description goes here.
+A wrapper script for git-log - shows subject, time and author of each commit plus branches and tags
 
 == Note on Patches/Pull Requests
  
