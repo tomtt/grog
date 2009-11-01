@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "grog"
     gem.summary = %Q{A wrapper script for git-log - shows subject, time and author of each commit plus branches and tags}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.description = %Q{A wrapper script for git-log}
     gem.email = "git@tomtenthij.nl"
     gem.homepage = "http://github.com/tomtt/grog"
     gem.authors = ["Tom ten Thij"]
