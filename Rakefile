@@ -10,7 +10,9 @@ begin
     gem.email = "git@tomtenthij.nl"
     gem.homepage = "http://github.com/tomtt/grog"
     gem.authors = ["Tom ten Thij"]
+    gem.add_dependency "term-ansicolor", ">= 1.0.4"
     gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_development_dependency "ruby-debug", ">= 0.10.3"
     gem.add_development_dependency "cucumber", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
