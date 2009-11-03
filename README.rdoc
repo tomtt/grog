@@ -13,6 +13,15 @@ A wrapper script for git-log - shows subject, time and author of each commit plu
    bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
+== Todo
+
+* Pipe output through the fancy show-in-less-only-if-there-are-more-lines-than-screen script
+* Create --no-color option
+* Improve performance by slashing some shell calls to git commands
+* Accept a commit range as a command line parameter
+* Fix tag/branch ambiguity issues
+* Show 'shadows' or remote branches (commit that is the latest in common with a remote branch)
+
 == Copyright
 
 Copyright (c) 2009 Tom ten Thij. See LICENSE for details.
