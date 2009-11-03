@@ -81,7 +81,7 @@ module Grog
     def self.hash_from_rev_names(rev_names)
       hash = Hash.new { |hash, key| hash[key] = [] }
       rev_names.each do |rev_name|
-        sha1 = GitLog.first_line_of_command("git-rev-parse #{rev_name}")
+        sha1 = GitLog.first_line_of_command("git rev-parse #{rev_name}")
         hash[sha1] << rev_name
       end
       hash
@@ -94,7 +94,7 @@ module Grog
     end
 
     def get_all_tags
-      tag_names = GitLog.lines_of_command("git-tag")
+      tag_names = GitLog.lines_of_command("git tag")
       @tags = GitLog.hash_from_rev_names(tag_names)
     end
 
