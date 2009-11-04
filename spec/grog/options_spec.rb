@@ -44,4 +44,12 @@ describe Grog::Options do
       lambda { Grog::Options.new(%w{--help}) }.should raise_error(SystemExit)
     end
   end
+
+  describe "version" do
+    it "should print it's version and exit" do
+      expected_version = "grog v" + File.read(File.join(File.dirname(__FILE__), '..', '..', 'VERSION'))
+      $stdout.should_receive(:write).with(expected_version)
+      Grog::Options.new(%w{--version})
+    end
+  end
 end

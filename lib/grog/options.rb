@@ -20,6 +20,9 @@ module Grog
         puts @opts
         exit
       end
+      @opts.on_tail("--version", "Show the version of the grog gem") do
+        puts "grog v" + `cat VERSION`
+      end
 
       @rest = @opts.parse(argv)
     end
