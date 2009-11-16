@@ -1,4 +1,5 @@
 require 'term/ansicolor'
+require 'grog/list_hash'
 
 module Grog
   class GitLog
@@ -114,7 +115,7 @@ module Grog
     def get_all_branches
       local_branches = branch_names_from_branch_command(:local)
       remote_branches = branch_names_from_branch_command(:remote)
-      @branches = local_branches.merge(remote_branches)
+      @branches = Grog::ListHash.merge_lists(local_branches, remote_branches)
     end
 
     def get_all_tags
