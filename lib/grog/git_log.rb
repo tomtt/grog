@@ -49,8 +49,8 @@ module Grog
           line += " T(" + Term::ANSIColor.cyan + tags.join(' ') + Term::ANSIColor.reset + ")"
         end
 
-        line
-      end.join("\n")
+        line + "\n"
+      end.join
     end
 
     protected
@@ -84,24 +84,42 @@ module Grog
       'git log --pretty=format:"%s" -n %d' % [format, @options[:number_of_commits_to_show]]
     end
 
-    def self.hash_from_rev_names(rev_names)
+    def self.hash_from_rev_names(rev_names, ref_root)
       hash = Hash.new { |hash, key| hash[key] = [] }
+      # Instead of running the command for each rev, it should run the
+      # command with all of them
       rev_names.each do |rev_name|
-        sha1 = GitLog.first_line_of_command("git rev-parse #{rev_name}")
+        sha1 = GitLog.first_line_of_command("git rev-parse #{ref_root}/#{rev_name}")
         hash[sha1] << rev_name
       end
       hash
     end
 
-    def get_all_branches
-      branch_names = GitLog.lines_of_command("git branch -a --no-color --no-track").
+    def branch_names_from_branch_command(type = :local)
+      case type
+      when :local
+        option = ''
+        ref = 'refs/heads'
+      when :remote
+        option = '-r '
+        ref = 'refs/remotes'
+      else
+        raise "Unknown type of branch: %s" % type
+      end
+      branch_names = GitLog.lines_of_command("git branch #{option}--no-color").
         map { |line| line[2..-1].split(' -> ').first }
-      @branches = GitLog.hash_from_rev_names(branch_names)
+      GitLog.hash_from_rev_names(branch_names, ref)
+    end
+
+    def get_all_branches
+      local_branches = branch_names_from_branch_command(:local)
+      remote_branches = branch_names_from_branch_command(:remote)
+      @branches = local_branches.merge(remote_branches)
     end
 
     def get_all_tags
       tag_names = GitLog.lines_of_command("git tag")
-      @tags = GitLog.hash_from_rev_names(tag_names)
+      @tags = GitLog.hash_from_rev_names(tag_names, 'refs/tags')
     end
 
     def fetch_log
