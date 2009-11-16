@@ -7,3 +7,9 @@ end
 Then /^the output should be$/ do |expected_output|
   @grog_output.should == expected_output
 end
+
+Then /^the output ignoring colour codes should be$/ do |expected_output|
+  colourless_output = @grog_output.gsub(/\e\[\d+m/, '')
+  colourless_output.should == expected_output
+end
+

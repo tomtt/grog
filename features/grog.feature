@@ -4,16 +4,11 @@ Feature: default output of grog
   I want to see an overview of my recent commits
 
   Scenario: running grog with no options
-    Given a test git repo
-    And the test git repo has a file called "file_a" containing "I am A"
-    And a commit of all changes to the test git repo with message "Commit A"
-    And a checkout in the git repo with new branch called "branch_a"
-    And the test git repo has a file called "file_b" containing "I am B"
-    And a commit of all changes to the test git repo with message "Commit B"
+    Given a test git repo extracted from the "test_git_repo" tarball
     When I run grog on the test git repo
-    Then the output should be
+    Then the output ignoring colour codes should be
       """
-Commit B
-Commit A
+6165a67 Commit B (Tom ten Thij) B(branch_b master) T(foo v2)
+bf5b520 Commit A (Tom ten Thij) B(branch_a foo) T(v1)
 
       """
