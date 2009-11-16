@@ -8,8 +8,14 @@ module Grog
       fetch_log
     end
 
-    def self.print(options)
-      puts self.new(options).to_s
+    def self.generate_parsing_arguments
+      options = Grog::Options.parse(ARGV)
+      generate(:number_of_commits_to_show => options.number_of_commits_to_show,
+               :show_datetimes => options.show_datetimes)
+    end
+
+    def self.generate(options)
+      self.new(options).to_s
     end
 
     def to_s
@@ -44,7 +50,7 @@ module Grog
         end
 
         line
-      end
+      end.join("\n")
     end
 
     protected

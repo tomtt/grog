@@ -1,8 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'grog'
-
-# puts `git log --pretty=format:"%x1b[33m%h%Creset %s %Cgreen(%an)%Creset"`
-options = Grog::Options.parse(ARGV)
-Grog::GitLog.print(:number_of_commits_to_show => options.number_of_commits_to_show,
-                   :show_datetimes => options.show_datetimes)
+puts Grog::GitLog.generate_parsing_arguments
