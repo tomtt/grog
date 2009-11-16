@@ -21,6 +21,8 @@ A wrapper script for git-log - shows subject, time and author of each commit plu
 * Accept a commit range as a command line parameter
 * Fix tag/branch ambiguity issues
 * Show 'shadows' or remote branches (commit that is the latest in common with a remote branch)
+* Distinguish commits by user with different color
+* Read user default options from a .grog file
 
 == Copyright
 
