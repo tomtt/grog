@@ -1,5 +1,6 @@
 require 'term/ansicolor'
 require 'grog/list_hash'
+require 'date'
 
 module Grog
   class GitLog
